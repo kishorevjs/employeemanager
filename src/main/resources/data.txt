@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "name": "Robert Downey Jr",
+        "email": "robertdowneyjr@gamil.com",
+        "jobTitle": "Lead",
+        "phone": "1234567890",
+        "imageUrl": "https://bootdey.com/img/Content/avatar/avatar1.png",
+        "employeeCode": "c5ff6209-e66b-4ccc-9bfc-2d5fcb6ce28a"
+    },
+    {
+        "id": 2,
+        "name": "Chris Pratt",
+        "email": "chrispratt@gamil.com",
+        "jobTitle": "Jr Lead",
+        "phone": "1234567890",
+        "imageUrl": "https://bootdey.com/img/Content/avatar/avatar2.png",
+        "employeeCode": "a377d17f-f360-454d-96a2-6e25dccddf02"
+    },
+    {
+        "id": 3,
+        "name": "Chris Evans",
+        "email": "chrisevans@gamil.com",
+        "jobTitle": "Sr Avenger",
+        "phone": "1234565436",
+        "imageUrl": "https://bootdey.com/img/Content/avatar/avatar3.png",
+        "employeeCode": "d3ffe618-97d5-411f-a5cc-3fe07c6a6c53"
+    },
+    {
+        "id": 4,
+        "name": "Black Widow",
+        "email": "scarlettjohanson@gamil.com",
+        "jobTitle": "Security",
+        "phone": "5284624927",
+        "imageUrl": "https://bootdey.com/img/Content/avatar/avatar4.png",
+        "employeeCode": "02ac1d9c-f16c-48f0-b9f3-f9428ec4134e"
+    },
+    {
+        "id": 5,
+        "name": "Elizabeth Oslen",
+        "email": "elizabethoslen@gamil.com",
+        "jobTitle": "Witch",
+        "phone": "1234565432",
+        "imageUrl": "https://bootdey.com/img/Content/avatar/avatar5.png",
+        "employeeCode": "bb7071c8-30cd-4f55-9db8-24b20e0ef76d"
+    }
+]
