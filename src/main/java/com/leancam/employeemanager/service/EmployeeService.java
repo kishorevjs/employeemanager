@@ -37,6 +37,11 @@ public class EmployeeService {
                 .orElseThrow(() -> new UserNotFoundException(" User by id " + id + " was not found"));
     }
 
+    public Employee findEmployeeByEmail(String email){
+        return employeeRepo.findEmployeeByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException(" User by email " + email + " was not found"));
+    }
+
     public void deleteEmployee(Long id){
         employeeRepo.deleteEmployeeById(id);
     }
