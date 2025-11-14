@@ -1,6 +1,7 @@
 package com.leancam.employeemanager.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import java.io.Serializable;
 
 @Setter
 @Getter
+@Data
 @Entity
 public class Employee implements Serializable {
     @Id
@@ -22,17 +24,6 @@ public class Employee implements Serializable {
     @Column(nullable = false, updatable = false)
     private String employeeCode;
     private Long salary;
-
-    public Employee(Long id, String name, String email, String jobTitle, String phone, String imageUrl, String employeeCode, Long salary) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.jobTitle = jobTitle;
-        this.phone = phone;
-        this.imageUrl = imageUrl;
-        this.employeeCode = employeeCode;
-        this.salary = salary;
-    }
 
     public Employee() {
     }
