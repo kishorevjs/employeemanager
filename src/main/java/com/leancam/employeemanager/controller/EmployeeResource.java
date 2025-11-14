@@ -44,6 +44,12 @@ public class EmployeeResource {
         return new ResponseEntity<>(newEmployee, HttpStatus.CREATED);
     }
 
+    @PostMapping("/add/bulk")
+    public ResponseEntity<List<Employee>> addEmployees(@RequestBody List<Employee> employees){
+        List<Employee> newEmployees = employeeService.addEmployees(employees);
+        return new ResponseEntity<>(newEmployees, HttpStatus.CREATED);
+    }
+
     @PutMapping("/update")
     public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee){
         Employee updateEmployee = employeeService.updateEmployee(employee);

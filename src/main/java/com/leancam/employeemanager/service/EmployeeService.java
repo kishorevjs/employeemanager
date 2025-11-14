@@ -24,6 +24,11 @@ public class EmployeeService {
         return employeeRepo.save(employee);
     }
 
+    public List<Employee> addEmployees(List<Employee> employees){
+        employees.forEach(e -> e.setEmployeeCode(UUID.randomUUID().toString()));
+        return employeeRepo.saveAll(employees);
+    }
+
     public List<Employee> findAllEmployees(){
         return employeeRepo.findAll();
     }
