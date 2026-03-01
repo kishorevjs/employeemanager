@@ -275,7 +275,7 @@ The application exposes an MCP (Model Context Protocol) server, allowing externa
 With the app running, register the server once:
 
 ```bash
-claude mcp add --transport http employee-manager-mcp http://localhost:8080/mcp
+claude mcp add --transport sse employee-manager-mcp http://localhost:8080/sse
 ```
 
 Verify the connection:
