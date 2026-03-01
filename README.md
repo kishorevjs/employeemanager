@@ -263,6 +263,67 @@ The application exposes an MCP (Model Context Protocol) server, allowing externa
 **Server name:** `employee-manager-mcp`
 **Version:** `1.0.0`
 
+### Endpoints
+
+| Transport | URL |
+|-----------|-----|
+| HTTP (recommended) | `http://localhost:8080/mcp` |
+| SSE (legacy) | `http://localhost:8080/sse` |
+
+### Connecting Claude Code
+
+With the app running, register the server once:
+
+```bash
+claude mcp add --transport http employee-manager-mcp http://localhost:8080/mcp
+```
+
+Verify the connection:
+
+```bash
+claude mcp list
+```
+
+Remove mcp server
+```bash
+claude mcp remove employee-manager-mcp
+```
+
+Inside a Claude Code session, run `/mcp` to confirm the server and tools are visible.
+
+### Connecting Claude Desktop
+
+Add the following to your Claude Desktop config file:
+
+- **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "employee-manager-mcp": {
+      "type": "http",
+      "url": "http://localhost:8080/mcp"
+    }
+  }
+}
+```
+
+### Team / Project-scoped Config
+
+Create a `.mcp.json` at the project root to share the MCP config with your team:
+
+```json
+{
+  "mcpServers": {
+    "employee-manager-mcp": {
+      "type": "http",
+      "url": "http://localhost:8080/mcp"
+    }
+  }
+}
+```
+
 ### Available Tools
 
 | Tool                  | Description                               |
@@ -270,6 +331,17 @@ The application exposes an MCP (Model Context Protocol) server, allowing externa
 | `getAllEmployees`     | Returns the full employee roster          |
 | `getEmployeeById`    | Finds an employee by numeric ID           |
 | `getEmployeeByEmail` | Finds an employee by email address        |
+
+### Example Prompts
+
+Once connected, ask questions naturally and Claude will call the tools automatically:
+
+```
+List all employees
+Find the employee with ID 1
+Find the employee with email jane@example.com
+Who is the highest paid employee?
+```
 
 ---
 
