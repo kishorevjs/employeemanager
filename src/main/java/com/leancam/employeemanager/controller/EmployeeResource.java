@@ -2,6 +2,7 @@ package com.leancam.employeemanager.controller;
 
 import com.leancam.employeemanager.model.Employee;
 import com.leancam.employeemanager.service.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,19 +40,19 @@ public class EmployeeResource {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee){
+    public ResponseEntity<Employee> addEmployee(@Valid @RequestBody Employee employee){
         Employee newEmployee = employeeService.addEmployee(employee);
         return new ResponseEntity<>(newEmployee, HttpStatus.CREATED);
     }
 
     @PostMapping("/add/bulk")
-    public ResponseEntity<List<Employee>> addEmployees(@RequestBody List<Employee> employees){
+    public ResponseEntity<List<Employee>> addEmployees(@Valid @RequestBody List<Employee> employees){
         List<Employee> newEmployees = employeeService.addEmployees(employees);
         return new ResponseEntity<>(newEmployees, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee){
+    public ResponseEntity<Employee> updateEmployee(@Valid @RequestBody Employee employee){
         Employee updateEmployee = employeeService.updateEmployee(employee);
         return new ResponseEntity<>(updateEmployee, HttpStatus.OK);
     }
