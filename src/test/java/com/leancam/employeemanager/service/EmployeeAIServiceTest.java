@@ -25,7 +25,7 @@ class EmployeeAIServiceTest {
     private ChatClient chatClient;
 
     @Mock
-    private ChatClient.PromptUserSpec promptUserSpec;
+    private ChatClient.ChatClientRequestSpec chatClientRequestSpec;
 
     @Mock
     private ChatClient.CallResponseSpec callResponseSpec;
@@ -42,10 +42,10 @@ class EmployeeAIServiceTest {
     // chat()
     @Test
     void chat_ShouldReturnResponseFromChatClient() {
-        when(chatClient.prompt()).thenReturn(promptUserSpec);
-        when(promptUserSpec.system(anyString())).thenReturn(promptUserSpec);
-        when(promptUserSpec.user(anyString())).thenReturn(promptUserSpec);
-        when(promptUserSpec.call()).thenReturn(callResponseSpec);
+        when(chatClient.prompt()).thenReturn(chatClientRequestSpec);
+        when(chatClientRequestSpec.system(anyString())).thenReturn(chatClientRequestSpec);
+        when(chatClientRequestSpec.user(anyString())).thenReturn(chatClientRequestSpec);
+        when(chatClientRequestSpec.call()).thenReturn(callResponseSpec);
         when(callResponseSpec.content()).thenReturn("Here are the employees.");
 
         String result = employeeAIService.chat("List all employees");
@@ -55,23 +55,23 @@ class EmployeeAIServiceTest {
 
     @Test
     void chat_ShouldPassUserMessageToChatClient() {
-        when(chatClient.prompt()).thenReturn(promptUserSpec);
-        when(promptUserSpec.system(anyString())).thenReturn(promptUserSpec);
-        when(promptUserSpec.user("Who is the manager?")).thenReturn(promptUserSpec);
-        when(promptUserSpec.call()).thenReturn(callResponseSpec);
+        when(chatClient.prompt()).thenReturn(chatClientRequestSpec);
+        when(chatClientRequestSpec.system(anyString())).thenReturn(chatClientRequestSpec);
+        when(chatClientRequestSpec.user("Who is the manager?")).thenReturn(chatClientRequestSpec);
+        when(chatClientRequestSpec.call()).thenReturn(callResponseSpec);
         when(callResponseSpec.content()).thenReturn("I don't have that information.");
 
         employeeAIService.chat("Who is the manager?");
 
-        verify(promptUserSpec).user("Who is the manager?");
+        verify(chatClientRequestSpec).user("Who is the manager?");
     }
 
     @Test
     void chat_ShouldReturnNull_WhenChatClientReturnsNull() {
-        when(chatClient.prompt()).thenReturn(promptUserSpec);
-        when(promptUserSpec.system(anyString())).thenReturn(promptUserSpec);
-        when(promptUserSpec.user(anyString())).thenReturn(promptUserSpec);
-        when(promptUserSpec.call()).thenReturn(callResponseSpec);
+        when(chatClient.prompt()).thenReturn(chatClientRequestSpec);
+        when(chatClientRequestSpec.system(anyString())).thenReturn(chatClientRequestSpec);
+        when(chatClientRequestSpec.user(anyString())).thenReturn(chatClientRequestSpec);
+        when(chatClientRequestSpec.call()).thenReturn(callResponseSpec);
         when(callResponseSpec.content()).thenReturn(null);
 
         String result = employeeAIService.chat("Hello");
@@ -81,14 +81,14 @@ class EmployeeAIServiceTest {
 
     @Test
     void chat_ShouldApplySystemPrompt() {
-        when(chatClient.prompt()).thenReturn(promptUserSpec);
-        when(promptUserSpec.system(anyString())).thenReturn(promptUserSpec);
-        when(promptUserSpec.user(anyString())).thenReturn(promptUserSpec);
-        when(promptUserSpec.call()).thenReturn(callResponseSpec);
+        when(chatClient.prompt()).thenReturn(chatClientRequestSpec);
+        when(chatClientRequestSpec.system(anyString())).thenReturn(chatClientRequestSpec);
+        when(chatClientRequestSpec.user(anyString())).thenReturn(chatClientRequestSpec);
+        when(chatClientRequestSpec.call()).thenReturn(callResponseSpec);
         when(callResponseSpec.content()).thenReturn("response");
 
         employeeAIService.chat("test");
 
-        verify(promptUserSpec).system(anyString());
+        verify(chatClientRequestSpec).system(anyString());
     }
 }
